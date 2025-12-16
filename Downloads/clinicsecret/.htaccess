@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^refer/([^/]+)/?$ refer/index.php?code=$1 [L,QSA]

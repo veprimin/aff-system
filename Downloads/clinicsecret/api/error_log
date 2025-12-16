@@ -1,0 +1,87 @@
+[10-Dec-2025 09:46:55 UTC] PHP Warning:  require_once(/home/mycatime/introduce.now/clinicsecret/api/header.php): Failed to open stream: No such file or directory in /home/mycatime/introduce.now/clinicsecret/api/product_edit.php on line 1
+[10-Dec-2025 09:46:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mycatime/introduce.now/clinicsecret/api/header.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mycatime/introduce.now/clinicsecret/api/product_edit.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/mycatime/introduce.now/clinicsecret/api/product_edit.php on line 1
+[10-Dec-2025 09:46:56 UTC] PHP Warning:  require_once(/home/mycatime/introduce.now/clinicsecret/api/header.php): Failed to open stream: No such file or directory in /home/mycatime/introduce.now/clinicsecret/api/product_add.php on line 1
+[10-Dec-2025 09:46:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mycatime/introduce.now/clinicsecret/api/header.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mycatime/introduce.now/clinicsecret/api/product_add.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/mycatime/introduce.now/clinicsecret/api/product_add.php on line 1
+[10-Dec-2025 09:47:20 UTC] PHP Warning:  require_once(/home/mycatime/introduce.now/clinicsecret/api/header.php): Failed to open stream: No such file or directory in /home/mycatime/introduce.now/clinicsecret/api/products.php on line 1
+[10-Dec-2025 09:47:20 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mycatime/introduce.now/clinicsecret/api/header.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mycatime/introduce.now/clinicsecret/api/products.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/mycatime/introduce.now/clinicsecret/api/products.php on line 1
+[10-Dec-2025 16:26:05 UTC] 
+========== DEBUG NORMALIZED WEBHOOK ==========
+Array
+(
+    [event] => order.completed
+    [data] => Array
+        (
+            [order] => Array
+                (
+                    [id] => 23392472
+                    [total] => 0
+                    [product_id] => 1048634
+                    [referral_code] => 
+                    [tracking_id] => 
+                )
+
+            [customer] => Array
+                (
+                    [email] => priyacharmin@gmail.com
+                )
+
+            [subscription] => Array
+                (
+                )
+
+        )
+
+)
+
+==============================================
+
+[10-Dec-2025 16:33:05 UTC] 
+========== DEBUG NORMALIZED WEBHOOK ==========
+Array
+(
+    [event] => order.completed
+    [data] => Array
+        (
+            [order] => Array
+                (
+                    [id] => 23392566
+                    [total] => 0
+                    [product_id] => 1048634
+                    [referral_code] => 
+                    [tracking_id] => 
+                )
+
+            [customer] => Array
+                (
+                    [email] => charminp.2@gmail.com
+                )
+
+            [subscription] => Array
+                (
+                )
+
+        )
+
+)
+
+==============================================
+
+[10-Dec-2025 16:33:05 UTC] SMART AUTOCREATE PRODUCT: 1048634 |  | auto_1048634 | 0 | onetime
+[10-Dec-2025 19:01:58 UTC] PHP Fatal error:  Cannot redeclare generateReferralCode() (previously declared in /home/mycatime/introduce.now/clinicsecret/api/webhook.php:50) in /home/mycatime/introduce.now/clinicsecret/api/helpers.php on line 35
+[10-Dec-2025 19:18:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function logWebhook() in /home/mycatime/introduce.now/clinicsecret/api/webhook.php:115
+Stack trace:
+#0 {main}
+  thrown in /home/mycatime/introduce.now/clinicsecret/api/webhook.php on line 115
+[16-Dec-2025 15:50:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function logWebhook() in /home/mycatime/introduce.now/clinicsecret/api/webhook.php:115
+Stack trace:
+#0 {main}
+  thrown in /home/mycatime/introduce.now/clinicsecret/api/webhook.php on line 115

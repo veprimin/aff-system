@@ -1,0 +1,711 @@
+[2025-12-10 18:38:20] === WEBHOOK STARTED ===
+[2025-12-10 18:38:20] RAW INPUT => {"type":"Order","api_key":null,"products":[{"id":1048634,"name":"TEST","price":"0.00","status":"Charged","shipping":"0.00","tax":"0.00","quantity":1,"coupon":{"amount":"1.00","code":"sam100","description":""}}],"customer":{"first_name":"priya","last_name":"charmin","email":"priyacharmin@gmail.com","phone_number":null,"customer_id":21356456,"billing_address":"408-755 10th St W","billing_city":"Owen sound","billing_state":"ON","billing_zip":"N4k 6J7","billing_country":"Canada"},"order":{"created_at":"2025-12-10T13:38:08-05:00","id":23393936,"total":"0.00","ip_address":"209.226.209.134","stripe_id":"cus_TZzdrCW6A0MYJ2","total_tax":"0.00","total_shipping":"0.00","processor":"Stripe","custom_fields":[],"upsell_custom_fields":[],"shipping_address":"408-755 10th St W","shipping_city":"Owen sound","shipping_state":"ON","shipping_zip":"N4k 6J7","shipping_country":"Canada","analytics":{"medium":"ambassador","source":"referral","campaign":"CP_101225","content":"f11ffd23e903179c7307120f08a30452","lead_source":null}},"affiliate":[]}
+[2025-12-10 18:38:20] JSON-DECODED RAW => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => priya
+            [last_name] => charmin
+            [email] => priyacharmin@gmail.com
+            [phone_number] => 
+            [customer_id] => 21356456
+            [billing_address] => 408-755 10th St W
+            [billing_city] => Owen sound
+            [billing_state] => ON
+            [billing_zip] => N4k 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-10T13:38:08-05:00
+            [id] => 23393936
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_TZzdrCW6A0MYJ2
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W
+            [shipping_city] => Owen sound
+            [shipping_state] => ON
+            [shipping_zip] => N4k 6J7
+            [shipping_country] => Canada
+            [analytics] => Array
+                (
+                    [medium] => ambassador
+                    [source] => referral
+                    [campaign] => CP_101225
+                    [content] => f11ffd23e903179c7307120f08a30452
+                    [lead_source] => 
+                )
+
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-10 18:38:20] STEP: NORMALIZATION START => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => priya
+            [last_name] => charmin
+            [email] => priyacharmin@gmail.com
+            [phone_number] => 
+            [customer_id] => 21356456
+            [billing_address] => 408-755 10th St W
+            [billing_city] => Owen sound
+            [billing_state] => ON
+            [billing_zip] => N4k 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-10T13:38:08-05:00
+            [id] => 23393936
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_TZzdrCW6A0MYJ2
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W
+            [shipping_city] => Owen sound
+            [shipping_state] => ON
+            [shipping_zip] => N4k 6J7
+            [shipping_country] => Canada
+            [analytics] => Array
+                (
+                    [medium] => ambassador
+                    [source] => referral
+                    [campaign] => CP_101225
+                    [content] => f11ffd23e903179c7307120f08a30452
+                    [lead_source] => 
+                )
+
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-10 18:38:20] Detected NEW SamCart Payload
+[2025-12-10 18:38:20] Normalized NEW SamCart Format => Array
+(
+    [event] => order.completed
+    [data] => Array
+        (
+            [order] => Array
+                (
+                    [id] => 23393936
+                    [total] => 0
+                    [product_id] => 1048634
+                    [referral_code] => 
+                    [tracking_id] => 
+                )
+
+            [customer] => Array
+                (
+                    [email] => priyacharmin@gmail.com
+                    [first_name] => priya
+                    [last_name] => charmin
+                )
+
+            [subscription] => Array
+                (
+                )
+
+        )
+
+)
+
+[2025-12-10 18:38:20] EVENT DETECTED => order.completed
+[2025-12-10 18:38:20] ORDER_BLOCK => Array
+(
+    [id] => 23393936
+    [total] => 0
+    [product_id] => 1048634
+    [referral_code] => 
+    [tracking_id] => 
+)
+
+[2025-12-10 18:38:20] CUSTOMER_BLOCK => Array
+(
+    [email] => priyacharmin@gmail.com
+    [first_name] => priya
+    [last_name] => charmin
+)
+
+[2025-12-10 18:38:20] REFERRAL_CODE
+[2025-12-10 18:38:20] TRACKING_ID
+[2025-12-10 18:38:20] STEP: LOAD CLIENT => clinicsecret
+[2025-12-10 18:38:20] CLIENT_RESULT => Array
+(
+    [id] => 1
+    [slug] => clinicsecret
+    [name] => Clinic Secret
+    [domain] => https://introduce.now
+    [landing_url] => https://clinicsecret.com
+    [created_at] => 2025-12-09 23:38:24
+)
+
+[2025-12-10 18:38:20] STEP: PRODUCT LOOKUP => 1048634
+[2025-12-10 18:38:20] PRODUCT_LOOKUP_RESULT => Array
+(
+    [id] => 4
+    [product_code] => TEST_1048634
+    [product_name] => Semaglutide
+    [samcart_product_id] => 1048634
+    [payout_amount] => 70.00
+    [payout_type] => onetime
+    [active] => 1
+)
+
+[2025-12-10 18:38:20] STEP: AUTO-USER CHECK START => priyacharmin@gmail.com
+[2025-12-10 18:38:20] USER_LOOKUP_RESULT => 
+[2025-12-10 18:38:20] USER NOT FOUND — creating new user
+[2025-12-10 18:38:20] INSERTING_USER => Array
+(
+    [email] => priyacharmin@gmail.com
+    [firstName] => priya
+    [lastName] => charmin
+    [initials] => P
+    [refCode] => P_101225
+)
+
+[2025-12-10 18:38:20] USER_INSERT_DONE
+[2025-12-10 18:38:20] RELOADED_USER => Array
+(
+    [id] => 3
+    [client_id] => 1
+    [email] => priyacharmin@gmail.com
+    [first_name] => priya
+    [last_name] => charmin
+    [initials] => P
+    [referral_code] => P_101225
+    [referral_link] => https://clinicsecret.com/?ref=P_101225
+    [eligible] => 1
+    [samcart_customer_id] => 
+    [password_hash] => 
+    [created_at] => 2025-12-10 13:38:20
+    [updated_at] => 2025-12-10 13:38:20
+)
+
+[2025-12-10 18:38:22] STEP: REFERRER CHECK START
+[2025-12-10 18:38:22] CHECK LAST CLICK FALLBACK
+[2025-12-10 18:38:22] LAST_CLICK_ROW => Array
+(
+    [referral_user_id] => 2
+)
+
+[2025-12-10 18:38:22] FINAL_REFERRER => Array
+(
+    [id] => 2
+    [client_id] => 1
+    [email] => charminp.2@gmail.com
+    [first_name] => Charmin
+    [last_name] => Patel
+    [initials] => 
+    [referral_code] => C_101225
+    [referral_link] => 
+    [eligible] => 1
+    [samcart_customer_id] => 
+    [password_hash] => 
+    [created_at] => 2025-12-10 11:33:05
+    [updated_at] => 2025-12-10 11:47:18
+)
+
+[2025-12-10 18:38:22] STEP: HANDLE EVENT => order.completed
+[2025-12-10 18:38:22] ORDER_COMPLETED START => Array
+(
+    [refUser] => Array
+        (
+            [id] => 2
+            [client_id] => 1
+            [email] => charminp.2@gmail.com
+            [first_name] => Charmin
+            [last_name] => Patel
+            [initials] => 
+            [referral_code] => C_101225
+            [referral_link] => 
+            [eligible] => 1
+            [samcart_customer_id] => 
+            [password_hash] => 
+            [created_at] => 2025-12-10 11:33:05
+            [updated_at] => 2025-12-10 11:47:18
+        )
+
+    [buyer] => Array
+        (
+            [id] => 3
+            [client_id] => 1
+            [email] => priyacharmin@gmail.com
+            [first_name] => priya
+            [last_name] => charmin
+            [initials] => P
+            [referral_code] => P_101225
+            [referral_link] => https://clinicsecret.com/?ref=P_101225
+            [eligible] => 1
+            [samcart_customer_id] => 
+            [password_hash] => 
+            [created_at] => 2025-12-10 13:38:20
+            [updated_at] => 2025-12-10 13:38:20
+        )
+
+)
+
+[2025-12-10 18:38:22] ORDER_PAYOUT_CREATED
+[2025-12-10 19:18:02] === WEBHOOK STARTED ===
+[2025-12-10 19:18:02] RAW INPUT => {"type":"Order","api_key":null,"products":[{"id":1048634,"name":"TEST","price":"0.00","status":"Charged","shipping":"0.00","tax":"0.00","quantity":1,"coupon":{"amount":"1.00","code":"sam100","description":""}}],"customer":{"first_name":"peter","last_name":"charly","email":"p.riyacharmin@gmail.com","phone_number":null,"customer_id":21358100,"billing_address":"408-755 10th St W","billing_city":"Owen sound","billing_state":"ON","billing_zip":"N4k 6J7","billing_country":"Canada"},"order":{"created_at":"2025-12-10T14:17:51-05:00","id":23394358,"total":"0.00","ip_address":"209.226.209.134","stripe_id":"cus_Ta2zWvs0OWcyak","total_tax":"0.00","total_shipping":"0.00","processor":"Stripe","custom_fields":[],"upsell_custom_fields":[],"shipping_address":"408-755 10th St W","shipping_city":"Owen sound","shipping_state":"ON","shipping_zip":"N4k 6J7","shipping_country":"Canada","analytics":{"medium":"ambassador","source":"referral","campaign":"C_101225","content":"f11fhfd23e903179c7307120f08a30452","lead_source":null}},"affiliate":[]}
+[2025-12-10 19:18:02] JSON-DECODED RAW => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => peter
+            [last_name] => charly
+            [email] => p.riyacharmin@gmail.com
+            [phone_number] => 
+            [customer_id] => 21358100
+            [billing_address] => 408-755 10th St W
+            [billing_city] => Owen sound
+            [billing_state] => ON
+            [billing_zip] => N4k 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-10T14:17:51-05:00
+            [id] => 23394358
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_Ta2zWvs0OWcyak
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W
+            [shipping_city] => Owen sound
+            [shipping_state] => ON
+            [shipping_zip] => N4k 6J7
+            [shipping_country] => Canada
+            [analytics] => Array
+                (
+                    [medium] => ambassador
+                    [source] => referral
+                    [campaign] => C_101225
+                    [content] => f11fhfd23e903179c7307120f08a30452
+                    [lead_source] => 
+                )
+
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-10 19:18:02] STEP: NORMALIZATION START => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => peter
+            [last_name] => charly
+            [email] => p.riyacharmin@gmail.com
+            [phone_number] => 
+            [customer_id] => 21358100
+            [billing_address] => 408-755 10th St W
+            [billing_city] => Owen sound
+            [billing_state] => ON
+            [billing_zip] => N4k 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-10T14:17:51-05:00
+            [id] => 23394358
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_Ta2zWvs0OWcyak
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W
+            [shipping_city] => Owen sound
+            [shipping_state] => ON
+            [shipping_zip] => N4k 6J7
+            [shipping_country] => Canada
+            [analytics] => Array
+                (
+                    [medium] => ambassador
+                    [source] => referral
+                    [campaign] => C_101225
+                    [content] => f11fhfd23e903179c7307120f08a30452
+                    [lead_source] => 
+                )
+
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-10 19:18:02] Detected NEW SamCart Payload
+[2025-12-10 19:18:02] Normalized NEW SamCart Format => Array
+(
+    [event] => order.completed
+    [data] => Array
+        (
+            [order] => Array
+                (
+                    [id] => 23394358
+                    [total] => 0
+                    [product_id] => 1048634
+                    [referral_code] => C_101225
+                    [tracking_id] => f11fhfd23e903179c7307120f08a30452
+                )
+
+            [customer] => Array
+                (
+                    [email] => p.riyacharmin@gmail.com
+                    [first_name] => peter
+                    [last_name] => charly
+                )
+
+            [subscription] => Array
+                (
+                )
+
+        )
+
+)
+
+[2025-12-10 19:18:02] EVENT DETECTED => order.completed
+[2025-12-11 06:53:25] === WEBHOOK STARTED ===
+[2025-12-11 06:53:25] RAW INPUT => 
+[2025-12-11 06:53:25] JSON-DECODED RAW
+[2025-12-11 06:53:25] STEP: NORMALIZATION START
+[2025-12-11 06:53:25] Payload not recognized or missing event
+[2025-12-11 09:08:49] === WEBHOOK STARTED ===
+[2025-12-11 09:08:49] RAW INPUT => 
+[2025-12-11 09:08:49] JSON-DECODED RAW
+[2025-12-11 09:08:49] STEP: NORMALIZATION START
+[2025-12-11 09:08:49] Payload not recognized or missing event
+[2025-12-13 08:35:32] === WEBHOOK STARTED ===
+[2025-12-13 08:35:32] RAW INPUT => 
+[2025-12-13 08:35:32] JSON-DECODED RAW
+[2025-12-13 08:35:32] STEP: NORMALIZATION START
+[2025-12-13 08:35:32] Payload not recognized or missing event
+[2025-12-16 15:50:28] === WEBHOOK STARTED ===
+[2025-12-16 15:50:28] RAW INPUT => {"type":"Order","api_key":null,"products":[{"id":1048634,"name":"TEST","price":"0.00","status":"Charged","shipping":"0.00","tax":"0.00","quantity":1,"coupon":{"amount":"1.00","code":"sam100","description":""}}],"customer":{"first_name":"charmin","last_name":"patel","email":"charminp2@gmail.com","phone_number":null,"customer_id":21356562,"billing_address":"408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA","billing_city":"Owen Sound","billing_state":"ON","billing_zip":"N4K 6J7","billing_country":"Canada"},"order":{"created_at":"2025-12-16T10:50:16-05:00","id":23448509,"total":"0.00","ip_address":"209.226.209.134","stripe_id":"cus_TZzoSIpzig3phS","total_tax":"0.00","total_shipping":"0.00","processor":"Stripe","custom_fields":[],"upsell_custom_fields":[],"shipping_address":"408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA","shipping_city":"Owen Sound","shipping_state":"ON","shipping_zip":"N4K 6J7","shipping_country":"Canada"},"affiliate":[]}
+[2025-12-16 15:50:28] JSON-DECODED RAW => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => charmin
+            [last_name] => patel
+            [email] => charminp2@gmail.com
+            [phone_number] => 
+            [customer_id] => 21356562
+            [billing_address] => 408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA
+            [billing_city] => Owen Sound
+            [billing_state] => ON
+            [billing_zip] => N4K 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-16T10:50:16-05:00
+            [id] => 23448509
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_TZzoSIpzig3phS
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA
+            [shipping_city] => Owen Sound
+            [shipping_state] => ON
+            [shipping_zip] => N4K 6J7
+            [shipping_country] => Canada
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-16 15:50:28] STEP: NORMALIZATION START => Array
+(
+    [type] => Order
+    [api_key] => 
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1048634
+                    [name] => TEST
+                    [price] => 0.00
+                    [status] => Charged
+                    [shipping] => 0.00
+                    [tax] => 0.00
+                    [quantity] => 1
+                    [coupon] => Array
+                        (
+                            [amount] => 1.00
+                            [code] => sam100
+                            [description] => 
+                        )
+
+                )
+
+        )
+
+    [customer] => Array
+        (
+            [first_name] => charmin
+            [last_name] => patel
+            [email] => charminp2@gmail.com
+            [phone_number] => 
+            [customer_id] => 21356562
+            [billing_address] => 408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA
+            [billing_city] => Owen Sound
+            [billing_state] => ON
+            [billing_zip] => N4K 6J7
+            [billing_country] => Canada
+        )
+
+    [order] => Array
+        (
+            [created_at] => 2025-12-16T10:50:16-05:00
+            [id] => 23448509
+            [total] => 0.00
+            [ip_address] => 209.226.209.134
+            [stripe_id] => cus_TZzoSIpzig3phS
+            [total_tax] => 0.00
+            [total_shipping] => 0.00
+            [processor] => Stripe
+            [custom_fields] => Array
+                (
+                )
+
+            [upsell_custom_fields] => Array
+                (
+                )
+
+            [shipping_address] => 408-755 10th St W, OWEN SOUND ON N4K 6J7, CANADA
+            [shipping_city] => Owen Sound
+            [shipping_state] => ON
+            [shipping_zip] => N4K 6J7
+            [shipping_country] => Canada
+        )
+
+    [affiliate] => Array
+        (
+        )
+
+)
+
+[2025-12-16 15:50:28] Detected NEW SamCart Payload
+[2025-12-16 15:50:28] Normalized NEW SamCart Format => Array
+(
+    [event] => order.completed
+    [data] => Array
+        (
+            [order] => Array
+                (
+                    [id] => 23448509
+                    [total] => 0
+                    [product_id] => 1048634
+                    [referral_code] => 
+                    [tracking_id] => 
+                )
+
+            [customer] => Array
+                (
+                    [email] => charminp2@gmail.com
+                    [first_name] => charmin
+                    [last_name] => patel
+                )
+
+            [subscription] => Array
+                (
+                )
+
+        )
+
+)
+
+[2025-12-16 15:50:28] EVENT DETECTED => order.completed
