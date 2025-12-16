@@ -24,7 +24,7 @@ $stmt = $pdo->prepare('SELECT COUNT(*) FROM referral_orders WHERE referral_user_
 $stmt->execute([$userId]);
 $activeSubs = (int)$stmt->fetchColumn();
 
-$stmt = $pdo->prepare('SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE referral_user_id = ?');
+$stmt = $pdo->prepare('SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE referral_user_id = ? AND status != "stopped"');
 $stmt->execute([$userId]);
 $lifetimePayout = (float)$stmt->fetchColumn();
 

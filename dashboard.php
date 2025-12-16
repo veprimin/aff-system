@@ -81,22 +81,43 @@ require_once __DIR__ . '/header.php';
 <table class="table table-sm table-bordered align-middle">
   <thead class="table-light">
     <tr>
-      <th>Referred Email</th>
+      <th>Order #</th>
       <th>Product</th>
+      <th>Payout Amount</th>
+      <th>Eligible for Payment?</th>
       <th>Order Date</th>
-      <th>Active</th>
     </tr>
   </thead>
   <tbody>
   <?php
-  $stmt = $pdo->prepare('SELECT * FROM referral_orders WHERE referral_user_id = ? ORDER BY order_date DESC LIMIT 100');
+  $stmt = $pdo->prepare('
+    SELECT ro.samcart_order_id, ro.product_type, ro.order_date, ro.subscription_active, rp.payout_amount, rp.status AS payout_status
+    FROM referral_orders ro
+    LEFT JOIN referral_payouts rp
+      ON rp.referral_user_id = ro.referral_user_id
+     AND rp.referred_email = ro.referred_email
+     AND rp.product_type = ro.product_type
+    WHERE ro.referral_user_id = ?
+    ORDER BY ro.order_date DESC
+    LIMIT 100
+  ');
   $stmt->execute([$userId]);
-  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)):
+      $payoutAmount = isset($row['payout_amount']) ? (float)$row['payout_amount'] : 0;
+      $eligible = ($row['payout_status'] ?? '') !== 'stopped' && ($row['subscription_active'] ?? false);
+  ?>
     <tr>
-      <td><?php echo htmlspecialchars($row['referred_email']); ?></td>
-      <td><?php echo htmlspecialchars($row['product_type']); ?></td>
-      <td><?php echo htmlspecialchars($row['order_date']); ?></td>
-      <td><?php echo $row['subscription_active'] ? 'Yes' : 'No'; ?></td>
+      <td class="fw-semibold">#<?php echo htmlspecialchars($row['samcart_order_id'] ?? ''); ?></td>
+      <td><?php echo htmlspecialchars($row['product_type'] ?? ''); ?></td>
+      <td><?php echo '$' . number_format($payoutAmount, 2); ?></td>
+      <td>
+        <?php if ($eligible): ?>
+          <span class="badge bg-success">Yes</span>
+        <?php else: ?>
+          <span class="badge bg-secondary">No</span>
+        <?php endif; ?>
+      </td>
+      <td><?php echo htmlspecialchars($row['order_date'] ?? ''); ?></td>
     </tr>
   <?php endwhile; ?>
   </tbody>

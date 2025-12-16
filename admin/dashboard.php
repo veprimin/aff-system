@@ -1,17 +1,41 @@
 <?php require_once __DIR__ . '/header.php'; ?>
 
 <?php
-$totalUsers = (int)$pdo->query('SELECT COUNT(*) FROM referral_users')->fetchColumn();
-$pendingPayouts = (float)$pdo->query('SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE status="pending"')->fetchColumn();
-$paidPayouts = (float)$pdo->query('SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE status="paid"')->fetchColumn();
-$totalReferrals = (int)$pdo->query('SELECT COUNT(*) FROM referral_orders')->fetchColumn();
-$newUsersToday = (int)$pdo->query('SELECT COUNT(*) FROM referral_users WHERE created_at >= DATE_SUB(NOW(), INTERVAL 1 DAY)')->fetchColumn();
+function safeFetchColumn(PDO $pdo, string $sql, $default = 0) {
+    try {
+        $stmt = $pdo->query($sql);
+        if ($stmt === false) {
+            return $default;
+        }
+        return $stmt->fetchColumn() ?? $default;
+    } catch (Throwable $e) {
+        error_log('Dashboard metric query failed: ' . $e->getMessage());
+        return $default;
+    }
+}
 
-$latestUsers = $pdo->query('SELECT id, email, first_name, last_name, referral_code, created_at FROM referral_users ORDER BY created_at DESC LIMIT 6')
-    ->fetchAll(PDO::FETCH_ASSOC);
+function safeFetchAll(PDO $pdo, string $sql): array {
+    try {
+        $stmt = $pdo->query($sql);
+        if ($stmt === false) {
+            return [];
+        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Throwable $e) {
+        error_log('Dashboard list query failed: ' . $e->getMessage());
+        return [];
+    }
+}
 
-$recentOrders = $pdo->query('SELECT ro.*, ru.first_name, ru.last_name, ru.email AS referrer_email FROM referral_orders ro LEFT JOIN referral_users ru ON ro.referral_user_id = ru.id ORDER BY ro.created_at DESC LIMIT 10')
-    ->fetchAll(PDO::FETCH_ASSOC);
+$totalUsers = (int)safeFetchColumn($pdo, 'SELECT COUNT(*) FROM referral_users');
+$pendingPayouts = (float)safeFetchColumn($pdo, 'SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE status="pending"');
+$paidPayouts = (float)safeFetchColumn($pdo, 'SELECT COALESCE(SUM(payout_amount),0) FROM referral_payouts WHERE status="paid"');
+$totalReferrals = (int)safeFetchColumn($pdo, 'SELECT COUNT(*) FROM referral_orders');
+$newUsersToday = (int)safeFetchColumn($pdo, 'SELECT COUNT(*) FROM referral_users WHERE created_at >= DATE_SUB(NOW(), INTERVAL 1 DAY)');
+
+$latestUsers = safeFetchAll($pdo, 'SELECT id, email, first_name, last_name, referral_code, created_at FROM referral_users ORDER BY created_at DESC LIMIT 6');
+
+$recentOrders = safeFetchAll($pdo, 'SELECT ro.*, ru.first_name, ru.last_name, ru.email AS referrer_email FROM referral_orders ro LEFT JOIN referral_users ru ON ro.referral_user_id = ru.id ORDER BY ro.created_at DESC LIMIT 10');
 ?>
 
 <h3 class="mb-4">Admin Dashboard</h3>
