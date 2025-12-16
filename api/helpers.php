@@ -88,7 +88,10 @@ function sendAmbassadorWelcomeEmail(array $user, string $resetLink): void
 {
     $email     = $user['email'];
     $firstName = ucfirst($user['first_name'] ?? '');
-    $refLink   = $user['referral_link'] ?? '';
+    $refCode   = trim($user['referral_code'] ?? '');
+    $refLink   = $refCode !== ''
+        ? "https://introduce.now/clinicsecret/refer/{$refCode}"
+        : ($user['referral_link'] ?? '');
 
     $subject = "Your ClinicSecret Ambassador Account";
 
