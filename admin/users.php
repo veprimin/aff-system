@@ -31,6 +31,11 @@ while ($u = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $fullName = trim("$first $last");
     if ($fullName === '') $fullName = 'Unknown User';
 
+    $emailSafe = htmlspecialchars($u['email'] ?? '');
+    $referralCodeSafe = htmlspecialchars($u['referral_code'] ?? '');
+    $createdSafe = htmlspecialchars($u['created_at'] ?? '');
+    $isEligible = !empty($u['eligible']);
+
     // Count clicks safely on referral_clicks table
     $clickCount = 0;
     try {
@@ -47,13 +52,13 @@ while ($u = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
 
     <tr>
-      <td><?= (int)$u['id'] ?></td>
-      <td><?= htmlspecialchars($u['email']) ?></td>
+      <td><?= (int)($u['id'] ?? 0) ?></td>
+      <td><?= $emailSafe ?></td>
       <td><?= htmlspecialchars($fullName) ?></td>
-      <td><?= htmlspecialchars($u['referral_code']) ?></td>
-      <td><?= !empty($u['eligible']) ? 'Yes' : 'No' ?></td>
+      <td><?= $referralCodeSafe ?></td>
+      <td><?= $isEligible ? 'Yes' : 'No' ?></td>
       <td><?= $clickCount ?></td>
-      <td><?= htmlspecialchars($u['created_at']) ?></td>
+      <td><?= $createdSafe ?></td>
       <td>
         <a href="/clinicsecret/admin/edit_user.php?id=<?= $u['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
         <a href="/clinicsecret/admin/user_detail.php?id=<?= $u['id'] ?>" class="btn btn-sm btn-info">View</a>

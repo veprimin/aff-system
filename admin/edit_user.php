@@ -52,25 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="post">
   <div class="mb-3">
     <label class="form-label">Email</label>
-    <input type="text" class="form-control" value="<?= htmlspecialchars($user['email']) ?>" disabled>
+    <input type="text" class="form-control" value="<?= htmlspecialchars($user['email'] ?? '') ?>" disabled>
   </div>
 
   <div class="mb-3">
     <label class="form-label">First Name</label>
     <input type="text" name="first_name" class="form-control"
-           value="<?= htmlspecialchars($user['first_name']) ?>">
+           value="<?= htmlspecialchars($user['first_name'] ?? '') ?>">
   </div>
 
   <div class="mb-3">
     <label class="form-label">Last Name</label>
     <input type="text" name="last_name" class="form-control"
-           value="<?= htmlspecialchars($user['last_name']) ?>">
+           value="<?= htmlspecialchars($user['last_name'] ?? '') ?>">
   </div>
 
   <div class="mb-3">
     <label>
-      <input type="checkbox" name="eligible" 
-             <?= $user['eligible'] ? 'checked' : '' ?>>
+      <input type="checkbox" name="eligible"
+             <?= !empty($user['eligible']) ? 'checked' : '' ?>>
       Eligible for payouts
     </label>
   </div>

@@ -41,11 +41,11 @@ $fullName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''))
 <div class="card mb-3">
   <div class="card-body">
     <h5><?= htmlspecialchars($fullName) ?></h5>
-    <p>Email: <?= htmlspecialchars($user['email']) ?></p>
-    <p>Referral Code: <?= htmlspecialchars($user['referral_code']) ?></p>
-    <p>Eligible: <?= $user['eligible'] ? 'Yes' : 'No' ?></p>
+    <p>Email: <?= htmlspecialchars($user['email'] ?? '') ?></p>
+    <p>Referral Code: <?= htmlspecialchars($user['referral_code'] ?? '') ?></p>
+    <p>Eligible: <?= !empty($user['eligible']) ? 'Yes' : 'No' ?></p>
     <p>Clicks: <?= $clickCount ?></p>
-    <p>Created: <?= htmlspecialchars($user['created_at']) ?></p>
+    <p>Created: <?= htmlspecialchars($user['created_at'] ?? '') ?></p>
 
     <a href="/clinicsecret/admin/edit_user.php?id=<?= $id ?>" class="btn btn-warning">Edit User</a>
   </div>
@@ -68,13 +68,13 @@ $fullName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''))
 
 <?php while ($o = $orderStmt->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
-  <td><?= $o['id'] ?></td>
-  <td><?= htmlspecialchars($o['referred_email']) ?></td>
-  <td><?= htmlspecialchars($o['product_type']) ?></td>
-  <td>$<?= number_format($o['order_amount'], 2) ?></td>
-  <td><?= htmlspecialchars($o['samcart_order_id']) ?></td>
-  <td><?= htmlspecialchars($o['samcart_subscription_id']) ?></td>
-  <td><?= htmlspecialchars($o['created_at']) ?></td>
+  <td><?= (int)($o['id'] ?? 0) ?></td>
+  <td><?= htmlspecialchars($o['referred_email'] ?? '') ?></td>
+  <td><?= htmlspecialchars($o['product_type'] ?? '') ?></td>
+  <td>$<?= number_format((float)($o['order_amount'] ?? 0), 2) ?></td>
+  <td><?= htmlspecialchars($o['samcart_order_id'] ?? '') ?></td>
+  <td><?= htmlspecialchars($o['samcart_subscription_id'] ?? '') ?></td>
+  <td><?= htmlspecialchars($o['created_at'] ?? '') ?></td>
 </tr>
 <?php endwhile; ?>
 
