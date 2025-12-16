@@ -41,8 +41,10 @@ setcookie("tracking_id", $trackingId, time() + 30 * 86400, "/");
 $ref = urlencode($user['referral_code']);
 $affid = urlencode($user['referral_code']);
 $subid = urlencode($trackingId);
+$scRef = $ref;
+$scVis = urlencode(strtoupper($user['referral_code']));
 
-$redirectUrl = "https://clinicsecret.com/?ref={$ref}&affid={$affid}&subid={$subid}&utm_source=referral&utm_medium=ambassador&utm_campaign=clinicsecret";
+$redirectUrl = "https://clinicsecret.com/?ref={$ref}&affid={$affid}&subid={$subid}&sc_ref={$scRef}&sc_vis={$scVis}&utm_source=referral&utm_medium=ambassador&utm_campaign=clinicsecret";
 
 // Redirect
 header("Location: $redirectUrl");
